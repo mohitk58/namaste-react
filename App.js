@@ -1,43 +1,36 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const parent = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child", key: "child1" }, [
-    React.createElement(
-      "h1",
-      { id: "heading", xyz: "abc", key: 4 },
-      "Hello World from React! - 🚀"
-    ),
-    React.createElement(
-      "h2",
-      { id: "heading", xyz: "abc", key: 5 },
-      "Hello World from React!"
-    ),
-  ]),
-  React.createElement("div", { id: "child", key: "child2" }, [
-    React.createElement(
-      "h1",
-      { id: "heading", xyz: "abc", key: 2 },
-      "Hello World from React!"
-    ),
-    React.createElement(
-      "h2",
-      { id: "heading", xyz: "abc", key: 3 },
-      "Hello World from React!"
-    ),
-  ]),
-]);
+// React.createElement => ReactElement => JS Object => HTMLElement(render)
 
-// ReactElement(Object) => HTML (Browser understands)
+const heading = React.createElement(
+  "h1",
+  { id: "heading" },
+  "Namaste React 🚀"
+);
 
-// const h1 = React.createElement(
-//   "h1",
-//   { id: "heading", xyz: "abc" },
-//   "Hello World from React!"
-// );
+console.log(heading);
 
-console.log(parent); // object
+// JSX => JavaScript Syntax (Its not the part of React)
+// JSX is not HTML inside JS
+// JSX is the HTML-like or XML-like syntax
+// JSX (transpiled before it reaches the JS Engine) - PARCEL - Babel (Transpiled the JSX code into React.createElement)
+
+// JSX => Babel transpiles it => React.createElement => ReactElement => JS Object => HTMLElement(render)
+// JSX => HTML + JS
+// JSX => className, HTML => class
+// Attributes - JSX => tabIndex (camelCase), HTML => tabindex
+
+const jsxHeading = <h1 id="heading">Namaste React using JSX 🚀</h1>; // JSX single line
+
+const jsxHeadingMultiLines = (
+  <h1 className="heading" tabIndex={1}>
+    Multi-line heading 😀
+  </h1>
+); // JSX multi line
+
+console.log(jsxHeading);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(parent);
+root.render(jsxHeadingMultiLines);

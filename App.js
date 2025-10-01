@@ -5,7 +5,7 @@ import ReactDOM from "react-dom/client";
 
 const heading = React.createElement(
   "h1",
-  { id: "heading" },
+  { id: "heading", xyz: "abc" },
   "Namaste React 🚀"
 );
 
@@ -21,6 +21,32 @@ console.log(heading);
 // JSX => className, HTML => class
 // Attributes - JSX => tabIndex (camelCase), HTML => tabindex
 
+// React Component - Everyting in react is a Component
+
+// Class Based Components - OLD (Uses JS Classes)
+// Functional Components - NEW (Uses JS Functions)
+
+// React Functional Component => Just the noraml JS Function which return some JSXs
+
+// const HeadingComponent = () => {
+//   return <h1>Namaste React Functional Component</h1>;
+// };
+
+// React Component => It is a normal JS functions which just retruns the piece of JSXs or React Elements.
+
+// Component Composition  - Component inside components.
+
+const Title = () => <h1>Hello World!! 🤓</h1>;
+
+const HeadingComponent = () => (
+  <div className="container">
+    {Title()}
+    <Title />
+    <Title></Title>
+    <h1 className="heading">Namaste React Functional Component</h1>
+  </div>
+);
+
 const jsxHeading = <h1 id="heading">Namaste React using JSX 🚀</h1>; // JSX single line
 
 const jsxHeadingMultiLines = (
@@ -33,4 +59,4 @@ console.log(jsxHeading);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(jsxHeadingMultiLines);
+root.render(<HeadingComponent />);

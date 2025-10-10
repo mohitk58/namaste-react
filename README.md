@@ -19,3 +19,31 @@
 - HTTPs
 - Tree Shaking - remove unused codes
 - Different dev and prod bundles
+
+# Namaste Food App - Planning
+
+- Header
+- - Logo
+- - Nav Items
+- Body
+- - Search
+- - Restaurant Container
+- - Restaurant Card
+-        - Img
+-        - Name of Res, Star, Rating, Cuisine, Delivery Time etc..
+- Footer
+- - Copyright
+- - Links
+- - Contact
+
+# Two types of Export/Import
+
+- Default Export/Import
+
+export default Component;
+import Component from 'path';
+
+- Named Export/Import
+
+export Component;
+import {Component} from 'path';

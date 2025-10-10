@@ -47,3 +47,11 @@ import Component from 'path';
 
 export Component;
 import {Component} from 'path';
+
+# React Hooks
+
+(Normal Utility JS Functions)
+
+- useState() - Super-powerful State Variables in Raect
+- useEffect()
+- Whenever a state variable update/change, React will re-render the component.

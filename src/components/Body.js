@@ -1,10 +1,35 @@
-import resList from "../utils/mockData";
+import { API_ENDPOINT } from "../utils/constants";
 import RestaurantCard from "./RestuarntCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   // State Variable - Super powerful variable
-  const [listOfRestaurants, setListOfRestaurants] = useState(resList);
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+
+  useEffect(() => {
+    // Its rendered just after initial load or body load
+    console.log("useEffect Called!!");
+    fetchData();
+  }, []);
+
+  console.log("Body Called!!"); // first this rendered then useEffect
+
+  const fetchData = async () => {
+    const data = await fetch(API_ENDPOINT);
+    const json = await data.json();
+    const restaurants =
+      json?.data?.cards?.find(
+        (card) =>
+          card?.card?.card?.gridElements?.infoWithStyle?.restaurants?.length
+      )?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
+
+    setListOfRestaurants(restaurants);
+  };
+
+  if (listOfRestaurants.length === 0) {
+    return <Shimmer />;
+  }
 
   return (
     <div className="body">

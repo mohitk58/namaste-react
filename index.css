@@ -66,3 +66,12 @@
   background-color: #f0f0f0;
   margin: 10px;
 }
+
+.login-btn {
+  cursor: pointer;
+  padding: 0;
+}
+
+.filter {
+  display: flex;
+}

@@ -1,28 +1,16 @@
-import { API_ENDPOINT } from "../utils/constants";
 import RestaurantCard from "./RestuarntCard";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Shimmer from "./Shimmer";
+import useRestaurantList from "../utils/useRestaurantList";
 
 const Body = () => {
-  const [listOfRestaurants, setListOfRestaurants] = useState([]);
-  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
 
+  // custom hook
+  const { listOfRestaurants, filteredRestaurant, setFilteredRestaurant } =
+    useRestaurantList();
+
   // Whenever state varaibles update, react triggers a reconciliation cycle (re-renders the component)
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const data = await fetch(API_ENDPOINT);
-    const json = await data.json();
-    const restaurants =
-      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants || [];
-
-    setListOfRestaurants(restaurants);
-    setFilteredRestaurant(restaurants);
-  };
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />

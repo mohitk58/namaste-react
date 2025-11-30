@@ -13,6 +13,7 @@ import Error from "./components/Error";
 // Dynamic Bundling
 // lazy loading
 // on demand loading
+// Dynamic import
 
 const Grocery = lazy(() => import("./components/Grocery"));
 const About = lazy(() => import("./components/About"));
